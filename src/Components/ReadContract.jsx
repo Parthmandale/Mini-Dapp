@@ -1,0 +1,20 @@
+import { useState,useEffect } from "react";
+
+const ReadContract = ({ state }) => {
+  const [data,setData]=useState("No data")
+  const { contract } = state; // Destructuring contract from state
+
+  useEffect(() => {
+    const readData = async () => {
+      const data = await contract.methods.retrieve().call();
+      setData(data)
+    }
+    contract && readData();      // readData function only getting exectuded when the contract is true(working having value in it)
+  }, [contract]); // Adding contract as a dependency
+
+  return <>
+  <p>Read Contract : {data}</p>
+  </>;
+}
+
+export default ReadContract;
