@@ -24,23 +24,23 @@ import ABI from './ABI/ABI.json'
  */
 
 function App() {
-  const [state, setState] = useState({web3:null,contract:null})
+  const [state, setState] = useState({web3:null,contrac:null})
 
   useEffect(() => {
     const template = async() => {
       let web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"))
      
-      const contractAddress = "0xd24a711b5F912eF500FE27Fa214d1CAE07b10048";
+      const contractAddress = "0x466bafC4E192747976457E078e738c88E6aF216c";
       const contractInstance = new web3.eth.Contract(ABI,contractAddress);
-      setState({web3:web3,contract:contractInstance})
+      setState({web3:web3,contrac:contractInstance})
     } 
     template()   // here we always call that function
   }, [])
 
   return (
     <>
-      <WriteContract state={state}/>
-      <ReadContract state={state}/>
+      <WriteContract States={state}/>
+      <ReadContract States={state}/>
     </>
   )
 }
